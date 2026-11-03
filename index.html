@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090613">
+<title>Pixel Craft Studio | Design Beyond Limits</title>
+<style>
+:root{--bg:#090613;--panel:#151025;--panel2:#1d1430;--purple:#7b2cff;--pink:#e13cff;--text:#f7f2ff;--muted:#b9adc9;--line:rgba(255,255,255,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#35104c 0%,transparent 36%),var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}
+.btn{border:0;border-radius:12px;padding:13px 20px;color:white;font-weight:700;background:linear-gradient(110deg,var(--purple),var(--pink));box-shadow:0 8px 28px #9a2cff35;transition:.25s}.btn:hover{transform:translateY(-2px);filter:brightness(1.12)}.btn.ghost{background:transparent;border:1px solid var(--line);box-shadow:none}
+.eyebrow{color:#d99cff;text-transform:uppercase;letter-spacing:3px;font-size:11px;font-weight:800}
+#authScreen{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 20%,#4a1767 0%,#130b20 42%,#080510 100%)}
+.auth-card{width:min(440px,100%);padding:34px;border:1px solid #ffffff20;border-radius:24px;background:#100b1ddd;box-shadow:0 30px 100px #0009;backdrop-filter:blur(18px)}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.4px}.brand-mark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#8b35ff,#f03bcb);display:grid;place-items:center;font-size:19px;box-shadow:0 0 25px #a52cff66}
+.auth-card h1{font-size:30px;margin:25px 0 8px}.muted{color:var(--muted);line-height:1.6}.tabs{display:flex;gap:8px;margin:25px 0 18px;background:#080510;padding:5px;border-radius:12px}.tabs button{flex:1;background:transparent;border:0;color:var(--muted);padding:11px;border-radius:9px}.tabs button.active{background:#322044;color:white}
+.field{display:block;margin:14px 0;color:#d9cce8;font-size:13px}.field input{width:100%;margin-top:7px;padding:14px;border:1px solid var(--line);border-radius:11px;background:#0b0712;color:white;outline:none}.field input:focus{border-color:#bd5bff;box-shadow:0 0 0 3px #9b39ff20}
+.full{width:100%;margin-top:10px}.fine{font-size:11px;color:#92869f;margin-top:18px;text-align:center}
+#doorScreen{min-height:100vh;display:grid;place-items:center;overflow:hidden;position:relative;background:radial-gradient(ellipse at center,#35134d 0%,#10091c 55%,#07040c 100%);padding:30px}
+.door-scene{text-align:center;position:relative;z-index:1}.door-frame{width:min(310px,75vw);height:430px;max-height:58vh;min-height:330px;margin:24px auto 28px;perspective:1100px;position:relative;background:linear-gradient(90deg,#07040d,#26113b);border:10px solid #30203f;border-bottom:0;box-shadow:0 0 80px #b32cff3b}
+.door{position:absolute;inset:0;transform-origin:left center;transform-style:preserve-3d;transition:transform 1.6s cubic-bezier(.2,.75,.15,1);background:linear-gradient(135deg,#7d22bb,#30104d 55%,#140a21);border:2px solid #c36cff;box-shadow:inset 0 0 45px #e24cff33}
+.door:before{content:"PIXEL CRAFT";position:absolute;top:35%;left:0;right:0;text-align:center;font-weight:900;letter-spacing:4px;font-size:19px;color:#f7d9ff;text-shadow:0 0 15px #ff8cff}
+.door:after{content:"";position:absolute;right:22px;top:50%;width:12px;height:12px;border-radius:50%;background:#ffdb8a;box-shadow:0 0 14px #ffdb8a}
+.door.open{transform:rotateY(-112deg)}.door-light{position:absolute;inset:12px;background:linear-gradient(90deg,#f3b6ff,#8b39ff,#140b21);opacity:.85;filter:blur(18px)}
+#doorScreen h1{font-size:clamp(28px,5vw,48px);margin:8px}.door-scene p{color:var(--muted)}
+#site{display:none}.topbar{position:sticky;top:0;z-index:10;background:#090613d9;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:74px;display:flex;align-items:center;justify-content:space-between}.navlinks{display:flex;align-items:center;gap:26px;color:#c9bdd6;font-size:13px}.navlinks a:hover{color:white}.navright{display:flex;gap:10px;align-items:center}
+.hero{padding:105px 0 85px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:#8e24ff35;filter:blur(100px);right:-80px;top:40px;pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;position:relative;z-index:1}.hero h1{font-size:clamp(42px,6vw,72px);line-height:1.03;letter-spacing:-2px;margin:18px 0}.gradient{background:linear-gradient(100deg,#fff,#d89cff 50%,#ef5ad6);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:530px;color:var(--muted);font-size:16px;line-height:1.8}.hero-actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.visual-card{min-height:360px;border:1px solid #ffffff24;border-radius:26px;padding:22px;background:linear-gradient(145deg,#25133c,#0d0916);box-shadow:0 30px 80px #0008;transform:rotate(2deg);position:relative;overflow:hidden}.visual-card:before{content:"";position:absolute;width:220px;height:220px;background:#a12bff;filter:blur(90px);right:-30px;top:-40px}.visual-top{display:flex;justify-content:space-between;color:#cbb8dc;font-size:12px;position:relative}.mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px;position:relative}.mock{height:125px;border-radius:15px;padding:15px;display:flex;flex-direction:column;justify-content:end;font-weight:900;letter-spacing:1px;box-shadow:inset 0 0 40px #0003}.mock:nth-child(1){background:linear-gradient(135deg,#f15ab6,#5b22a9)}.mock:nth-child(2){background:linear-gradient(135deg,#191b36,#326b9c)}.mock:nth-child(3){background:linear-gradient(135deg,#ff9d43,#8e2e77)}.mock:nth-child(4){background:linear-gradient(135deg,#7b37df,#171329)}
+section{padding:80px 0}.section-head{text-align:center;max-width:650px;margin:0 auto 42px}.section-head h2{font-size:clamp(28px,4vw,42px);margin:12px 0}.section-head p{color:var(--muted);line-height:1.7}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.service,.work-card{background:linear-gradient(145deg,#1b122a,#100b19);border:1px solid var(--line);border-radius:18px;padding:23px;transition:.25s}.service:hover,.work-card:hover{transform:translateY(-5px);border-color:#a64dff80}.service .ico{font-size:26px}.service h3{margin:17px 0 8px}.service p{color:var(--muted);font-size:13px;line-height:1.7}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.work-art{height:190px;border-radius:13px;margin-bottom:15px;display:grid;place-items:center;text-align:center;font-weight:900;font-size:23px;letter-spacing:1px;padding:15px}.work-card:nth-child(1) .work-art{background:linear-gradient(135deg,#e94ab6,#5222a8)}.work-card:nth-child(2) .work-art{background:linear-gradient(135deg,#112c4b,#2685a1)}.work-card:nth-child(3) .work-art{background:linear-gradient(135deg,#ff9d43,#9d2777)}.work-card h3{margin:0 0 6px}.work-card p{color:var(--muted);font-size:12px;margin:0}
+.cta{background:radial-gradient(ellipse at 50% 0%,#4c1c68,#151020 70%);border:1px solid var(--line);border-radius:25px;padding:48px;text-align:center}.cta h2{font-size:clamp(27px,4vw,40px);margin:10px}.cta p{color:var(--muted);margin-bottom:25px}
+footer{padding:28px 0;border-top:1px solid var(--line);color:#968ba4;font-size:12px}.footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+#adminPanel{position:fixed;inset:0;background:#080510f5;z-index:30;padding:25px;overflow:auto}.admin-box{max-width:600px;margin:40px auto;background:var(--panel);border:1px solid var(--line);padding:25px;border-radius:18px}.admin-box input{width:100%;padding:12px;margin:8px 0 15px;background:#090613;border:1px solid var(--line);border-radius:9px;color:white}.admin-actions{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:800px){.hero-grid{grid-template-columns:1fr}.visual-card{max-width:520px;width:100%;margin:auto}.services{grid-template-columns:repeat(2,1fr)}.portfolio-grid{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}}
+@media(max-width:520px){.auth-card{padding:25px}.hero{padding:75px 0 55px}.services,.portfolio-grid{grid-template-columns:1fr}.visual-card{min-height:320px}.mock{height:105px}.cta{padding:32px 20px}.nav{height:65px}}
+</style>
+</head>
+<body>
+<div id="authScreen">
+  <div class="auth-card">
+    <div class="brand"><span class="brand-mark">✦</span> PIXEL CRAFT STUDIO</div>
+    <h1 id="authTitle">Welcome back.</h1>
+    <p class="muted" id="authSub">Sign in to enter your creative space.</p>
+    <div class="tabs"><button id="loginTab" class="active" type="button" onclick="setMode('login')">Login</button><button id="signupTab" type="button" onclick="setMode('signup')">Sign Up</button></div>
+    <form id="authForm">
+      <label class="field hidden" id="nameField">Your name<input id="userName" type="text" placeholder="Enter your name"></label>
+      <label class="field">Email address<input id="email" type="email" placeholder="you@example.com" required></label>
+      <label class="field">Password<input id="password" type="password" placeholder="At least 6 characters" minlength="6" required></label>
+      <button class="btn full" id="authSubmit" type="submit">Login to Studio ↗</button>
+    </form>
+    <p class="fine">Preview version • Demo sign-in only. Connect a secure auth provider before public launch.</p>
+  </div>
+</div>
+<div id="doorScreen" class="hidden">
+  <div class="door-scene">
+    <div class="eyebrow">Your creative space awaits</div>
+    <h1>Step into <span class="gradient">Pixel Craft.</span></h1>
+    <p>One door. Endless possibilities.</p>
+    <div class="door-frame"><div class="door-light"></div><div class="door" id="door"></div></div>
+    <button class="btn" id="enterBtn" onclick="enterStudio()">ENTER STUDIO ↗</button>
+  </div>
+</div>
+<div id="site">
+<header class="topbar"><div class="wrap nav">
+  <a class="brand" href="#home"><span class="brand-mark">✦</span> PIXEL CRAFT STUDIO</a>
+  <nav class="navlinks"><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#contact">Contact</a></nav>
+  <div class="navright"><button class="btn ghost" onclick="openAdmin()">Admin</button><button class="btn" onclick="logout()">Log out</button></div>
+</div></header>
+<main>
+<section class="hero" id="home"><div class="wrap hero-grid">
+  <div><div class="eyebrow">Creative design studio</div><h1>Design that makes your brand <span class="gradient">unforgettable.</span></h1>
+  <p>We turn ideas into bold visuals. From logos to social media creatives, Pixel Craft Studio gives your brand a look that stands out.</p>
+  <div class="hero-actions"><a class="btn" href="#portfolio">Explore Portfolio ↗</a><a class="btn ghost" href="#contact">Start a Project</a></div></div>
+  <div class="visual-card"><div class="visual-top"><span>✦ CREATIVE PLAYGROUND</span><span>01 / 04</span></div><div class="mock-grid"><div class="mock">BRAND<br>IDENTITY</div><div class="mock">DIGITAL<br>ART</div><div class="mock">SOCIAL<br>CREATIVE</div><div class="mock">THUMB<br>NAILS</div></div></div>
+</div></section>
+<section id="services"><div class="wrap"><div class="section-head"><div class="eyebrow">What we create</div><h2>Creative services for <span class="gradient">your next big idea.</span></h2><p>Thoughtful design, clean details and visuals that help your brand get noticed.</p></div>
+<div class="services">
+  <article class="service"><div class="ico">✦</div><h3>Logo Design</h3><p>Distinctive logos and brand marks that make a lasting first impression.</p></article>
+  <article class="service"><div class="ico">▧</div><h3>Social Media Posts</h3><p>Scroll-stopping creatives for Instagram, Facebook and more.</p></article>
+  <article class="service"><div class="ico">▶</div><h3>YouTube Thumbnails</h3><p>Bold thumbnails designed to make your videos stand out.</p></article>
+  <article class="service"><div class="ico">✉</div><h3>Birthday & Invitations</h3><p>Personalised posters and invitations for memorable moments.</p></article>
+  <article class="service"><div class="ico">▤</div><h3>Business Banners</h3><p>Professional banners for promotions, events and businesses.</p></article>
+  <article class="service"><div class="ico">✧</div><h3>Custom Designs</h3><p>Have a different idea? Let's create something made for you.</p></article>
+</div></div></section>
+<section id="portfolio"><div class="wrap"><div class="section-head"><div class="eyebrow">Selected work</div><h2>Ideas made <span class="gradient">visible.</span></h2><p>A preview of the creative direction. Add your own projects from the Admin panel.</p></div>
+<div class="portfolio-grid" id="portfolioGrid">
+  <article class="work-card"><div class="work-art">YOUR BRAND<br>YOUR STORY</div><h3>Brand Identity</h3><p>Logo & visual identity concept</p></article>
+  <article class="work-card"><div class="work-art">CREATE.<br>CONNECT.</div><h3>Social Media Creative</h3><p>Digital campaign concept</p></article>
+  <article class="work-card"><div class="work-art">LEVEL UP<br>YOUR GAME</div><h3>YouTube Thumbnail</h3><p>Gaming thumbnail concept</p></article>
+</div></div></section>
+<section id="contact"><div class="wrap"><div class="cta"><div class="eyebrow">Have a project in mind?</div><h2>Let's build something <span class="gradient">brilliant.</span></h2><p>Tell us what you have in mind. We'll get back to you.</p><a class="btn" id="whatsappLink" href="#" target="_blank" rel="noopener">Chat on WhatsApp ↗</a></div></div></section>
+</main>
+<footer><div class="wrap footer-inner"><span>© <span id="year"></span> Pixel Craft Studio. All rights reserved.</span><span>Designed with ✦ and imagination.</span></div></footer>
+</div>
+<div id="adminPanel" class="hidden"><div class="admin-box"><div class="brand"><span class="brand-mark">✦</span> PORTFOLIO MANAGER</div><h2>Add a portfolio item</h2><p class="muted">Preview-only: items are saved in this browser. For permanent multi-device uploads, connect cloud storage and admin authentication.</p>
+<label class="field">Project title<input id="projectTitle" placeholder="e.g. Cafe logo design"></label>
+<label class="field">Image URL<input id="projectImage" placeholder="https://... (public image URL)"></label>
+<label class="field">Category<input id="projectCategory" placeholder="e.g. Logo Design"></label>
+<div class="admin-actions"><button class="btn" onclick="addProject()">Add to Gallery</button><button class="btn ghost" onclick="closeAdmin()">Close</button></div>
+</div></div>
+<script>
+let mode='login';
+function setMode(m){mode=m;document.getElementById('loginTab').classList.toggle('active',m==='login');document.getElementById('signupTab').classList.toggle('active',m==='signup');document.getElementById('nameField').classList.toggle('hidden',m!=='signup');document.getElementById('authTitle').textContent=m==='login'?'Welcome back.':'Create your account.';document.getElementById('authSub').textContent=m==='login'?'Sign in to enter your creative space.':'Join the Pixel Craft creative space.';document.getElementById('authSubmit').textContent=m==='login'?'Login to Studio ↗':'Create Account ↗';}
+document.getElementById('authForm').addEventListener('submit',e=>{e.preventDefault();const email=document.getElementById('email').value.trim();const pass=document.getElementById('password').value;if(!email||pass.length<6){alert('Please enter a valid email and password (minimum 6 characters).');return;}if(mode==='signup'&&!document.getElementById('userName').value.trim()){alert('Please enter your name.');return;}sessionStorage.setItem('pcs_demo_user',email);document.getElementById('authScreen').classList.add('hidden');document.getElementById('doorScreen').classList.remove('hidden');});
+function enterStudio(){const door=document.getElementById('door');door.classList.add('open');document.getElementById('enterBtn').textContent='WELCOME ✦';setTimeout(()=>{document.getElementById('doorScreen').classList.add('hidden');document.getElementById('site').style.display='block';},1250);}
+function logout(){sessionStorage.removeItem('pcs_demo_user');document.getElementById('site').style.display='none';document.getElementById('authScreen').classList.remove('hidden');document.getElementById('doorScreen').classList.add('hidden');document.getElementById('door').classList.remove('open');}
+function openAdmin(){document.getElementById('adminPanel').classList.remove('hidden');}
+function closeAdmin(){document.getElementById('adminPanel').classList.add('hidden');}
+function addProject(){const title=document.getElementById('projectTitle').value.trim(),url=document.getElementById('projectImage').value.trim(),cat=document.getElementById('projectCategory').value.trim()||'Design';if(!title||!url){alert('Please enter a title and a public image URL.');return;}try{new URL(url)}catch(e){alert('Please enter a valid image URL.');return;}const items=JSON.parse(localStorage.getItem('pcs_projects')||'[]');items.push({title,url,cat});localStorage.setItem('pcs_projects',JSON.stringify(items));renderProjects();document.getElementById('projectTitle').value='';document.getElementById('projectImage').value='';document.getElementById('projectCategory').value='';alert('Added in this browser preview.');}
+function renderProjects(){const items=JSON.parse(localStorage.getItem('pcs_projects')||'[]');const grid=document.getElementById('portfolioGrid');items.forEach((p,i)=>{if(document.getElementById('project-'+i))return;const card=document.createElement('article');card.className='work-card';card.id='project-'+i;const art=document.createElement('div');art.className='work-art';art.style.backgroundImage=`linear-gradient(#09061355,#09061355),url("${p.url.replace(/"/g,'')}")`;art.style.backgroundSize='cover';art.style.backgroundPosition='center';art.textContent='';const h=document.createElement('h3');h.textContent=p.title;const para=document.createElement('p');para.textContent=p.cat;card.append(art,h,para);grid.append(card);});}
+document.getElementById('year').textContent=new Date().getFullYear();
+const WHATSAPP_NUMBER='91XXXXXXXXXX'; // Replace with your WhatsApp number including country code, without + or spaces.
+document.getElementById('whatsappLink').href='https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent('Hello Pixel Craft Studio! I would like to discuss a design project.');
+renderProjects();
+if(sessionStorage.getItem('pcs_demo_user')){document.getElementById('authScreen').classList.add('hidden');document.getElementById('doorScreen').classList.remove('hidden');}
+</script>
+</body>
+</html>
